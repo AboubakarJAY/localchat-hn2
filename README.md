@@ -1,50 +1,46 @@
-# Welcome to your Expo app 👋
+# Bienvenue sur l'application mobile localchat-hn2 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Ce projet est une application mobile développée avec [Expo](https://expo.dev) grâce à l'outil [`create-expo-app`](https://www.npmjs.com/package/create-expo-app). Le but de cette application est de [ajouter ici une brève description des fonctionnalités de l'application, par exemple "faciliter la communication locale"].
 
-## Get started
+## Comment démarrer
 
-1. Install dependencies
+### 1. Installer les dépendances
 
-   ```bash
-   npm install
-   ```
+Avant de commencer, assurez-vous d'avoir **Node.js** installé sur votre PC. Si ce n'est pas le cas, téléchargez-le depuis [Node.js](https://nodejs.org/).
 
-2. Start the app
+Ensuite, une fois que vous avez cloné le dépôt sur votre machine, ouvrez un terminal à la racine du projet et exécutez la commande suivante pour installer les dépendances nécessaires :
 
-   ```bash
-    npx expo start
-   ```
+```bash
+npm install
+```
 
-In the output, you'll find options to open the app in a
+### 2. Lancer l'application
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Après avoir installé les dépendances, vous pouvez démarrer l'application en exécutant la commande suivante :
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+```bash
+npx expo start
+```
 
-## Get a fresh project
+Vous verrez plusieurs options dans le terminal pour ouvrir l'application sur différents supports :
 
-When you're ready, run:
+- **Déploiement de développement** : [build de développement](https://docs.expo.dev/develop/development-builds/introduction/)
+- **Émulateur Android** : Si vous avez Android Studio, vous pouvez utiliser l'[émulateur Android](https://docs.expo.dev/workflow/android-studio-emulator/)
+- **Simulateur iOS** : Si vous êtes sur macOS, vous pouvez utiliser le [simulateur iOS](https://docs.expo.dev/workflow/ios-simulator/)
+- **Expo Go** : Vous pouvez aussi utiliser [Expo Go](https://expo.dev/go), une sandbox limitée pour tester votre application sur des appareils physiques.
+
+### 3. Développement
+
+Pour commencer à développer, vous pouvez modifier les fichiers situés dans le dossier **app**. Ce projet utilise un système de [routing basé sur les fichiers](https://docs.expo.dev/router/introduction), ce qui signifie que chaque fichier correspond à une route dans l'application.
+
+### 4. Réinitialiser le projet
+
+Si vous voulez repartir de zéro avec un projet vierge, exécutez la commande suivante :
 
 ```bash
 npm run reset-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Cela déplacera le code de base dans un dossier appelé **app-example** et créera un nouveau dossier **app** vide où vous pourrez commencer votre développement.
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Avec cette version, tout étudiant devrait pouvoir cloner, installer les dépendances, et lancer l'application sans problème.
