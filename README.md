@@ -1,6 +1,6 @@
 # Bienvenue sur l'application mobile localchat-hn2 ⚛️🙏
 
-Ce projet est une application mobile développée avec [Expo](https://expo.dev) grâce à l'outil [`create-expo-app`](https://www.npmjs.com/package/create-expo-app). Le but de cette application est de [ajouter ici une brève description des fonctionnalités de l'application, par exemple "faciliter la communication locale"].
+Ce projet est une application mobile développée par les étudiant de **Humanité Numérique 2 de l'école nationale supérieur polytechnique de Yaoundé** avec [Expo](https://expo.dev) grâce à l'outil [`create-expo-app`](https://www.npmjs.com/package/create-expo-app). Le but est de faire tourner en **local** une application avec une des fonctionnalités qui sont: **la messagerie instantanée, la création et gestion d'évènement, la création et gestion de communauté, notification push**, [ajouter ici une brève description des fonctionnalités de l'application, par exemple "faciliter la communication locale"].
 
 ## Comment démarrer
 
