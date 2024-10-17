@@ -1,6 +1,7 @@
 import { router } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import CustomButton from "../components/CustomButton";
 
 function Onboarding() {
   return (
@@ -10,14 +11,14 @@ function Onboarding() {
           position: "absolute",
           top: -100, // Ajustez pour positionner correctement
           left: 80,
-          width: 500, // Largeur plus grande pour l'effet d'ombre étendu
-          height: 300, // Hauteur plus grande pour l'effet d'ombre étendu
-          backgroundColor: "transparent", // Pas de couleur de fond
+          width: 500,
+          height: 300,
+          backgroundColor: "transparent",
           transform: [{ rotate: "-45deg" }],
-          borderRadius: 250, // Assurez-vous que c'est plus de la moitié de la hauteur
-          shadowColor: "#43116A", // Couleur de l'ombre
+          borderRadius: 250,
+          shadowColor: "#43116A",
           shadowOffset: { width: 0, height: 0 }, // Aucun décalage
-          shadowOpacity: 0.5, // Opacité de l'ombre (ajustez comme nécessaire)
+          shadowOpacity: 0.5,
           shadowRadius: 30, // Rayon de l'ombre pour un flou plus important
           elevation: 150, // Pour Android
         }}
@@ -42,17 +43,20 @@ function Onboarding() {
           <View className="h-[1px] border-b w-40 border-gray-500" />
           <View className="h-[1px] border-b w-40 border-gray-500" />
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            router.replace("href: /(auth)/sign-up");
-          }}
-          className="bg-white w-11/12 py-4 rounded-xl border border-gray-300" //absolute bottom-8
-        >
-          <Text className="text-black text-center">S'inscrire</Text>
-        </TouchableOpacity>
+        <CustomButton
+          text="S'inscrire"
+          route="/(auth)/sign-up"
+          title="s'inscrire"
+          bgColor="#fff"
+          textColor="#000"
+        />
         <View className="flex flex-row justify-around items-center">
           <Text className="text-[#B9C1BE]">Déjà un compte? </Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              router.replace("/(auth)/sign-in");
+            }}
+          >
             <Text className="text-white">Connexion</Text>
           </TouchableOpacity>
         </View>
