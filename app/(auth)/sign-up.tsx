@@ -1,8 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"; // Importation d'AsyncStorage
+import { useFocusEffect } from "@react-navigation/native"; // Importer useFocusEffect
 import { router } from "expo-router";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   Alert,
+  BackHandler, // Importer BackHandler
   Image,
   ScrollView,
   Text,
@@ -98,7 +100,7 @@ const SignUp = () => {
           await AsyncStorage.setItem("token", data.token); // Assurez-vous que le serveur renvoie un champ 'token'
           Alert.alert("Succès", "Inscription réussie");
           // Rediriger vers la page d'accueil après l'inscription réussie
-          router.replace("/home");
+          router.replace("/(root)/(tabs)/home");
         } else {
           // Afficher le message d'erreur envoyé par le serveur
           setErrors({
@@ -112,20 +114,54 @@ const SignUp = () => {
     }
   };
 
+  // Gestion de l'événement de retour
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        router.back(); // Retourner à la page précédente
+        return true; // Retourner true pour indiquer que l'événement a été géré
+      };
+
+      BackHandler.addEventListener("hardwareBackPress", onBackPress);
+
+      return () => {
+        BackHandler.removeEventListener("hardwareBackPress", onBackPress);
+      };
+    }, [])
+  );
+
   return (
-    <ScrollView className="flex-1 bg-gradient-bg">
-      <SafeAreaView className="flex-1 mt-5 p-5 rounded-lg bg-white bg-opacity-80">
+    <ScrollView className="flex-1 bg-[#060406]">
+      <SafeAreaView className="flex-1 mt-5 p-5 rounded-lg bg-[#060406] bg-opacity-80">
+        <View
+          style={{
+            position: "absolute",
+            top: -100, // Ajustez pour positionner correctement
+            left: 80,
+            width: 500,
+            height: 300,
+            backgroundColor: "transparent",
+            transform: [{ rotate: "-45deg" }],
+            borderRadius: 250,
+            shadowColor: "#43116A",
+            shadowOffset: { width: 0, height: 0 }, // Aucun décalage
+            shadowOpacity: 0.5,
+            shadowRadius: 30, // Rayon de l'ombre pour un flou plus important
+            elevation: 150, // Pour Android
+          }}
+        />
+
         <TouchableOpacity onPress={() => router.replace("/(auth)/welcome")}>
           <Image
             source={require("../../assets/icons/retour.png")}
-            style={{ width: 28, height: 28, marginLeft: 45 }}
+            style={{ width: 28, height: 28, marginLeft: 20 }}
           />
         </TouchableOpacity>
         <View className="items-center">
-          <Text className="text-center text-xl text-black font-bold">
+          <Text className="text-center text-xl text-white font-bold">
             Bienvenue
           </Text>
-          <Text className="text-center text-xl text-black font-bold">
+          <Text className="text-center text-xl text-white font-bold">
             Inscrivez-vous pour commencer.
           </Text>
           <View className="mb-14">
@@ -163,14 +199,14 @@ const SignUp = () => {
           )}
           <CustomButton
             onPress={submitForm}
-            textColor="#fff"
+            textColor="#000"
             text="Créer le compte"
-            bgColor="#24786D"
+            bgColor="#fff"
           />
           <View className="flex flex-col justify-around items-center">
             <Text className="text-[#B9C1BE]">Ou</Text>
             <TouchableOpacity onPress={() => router.replace("/(auth)/sign-in")}>
-              <Text className="text-black">Connectez-vous</Text>
+              <Text className="text-[#24786D]">Connectez-vous</Text>
             </TouchableOpacity>
           </View>
         </View>

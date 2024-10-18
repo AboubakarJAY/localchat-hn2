@@ -77,7 +77,7 @@ const SignIn = () => {
           Alert.alert("Succès", "Connexion réussie");
 
           // Rediriger vers la page d'accueil après connexion réussie
-          router.replace("/home");
+          router.replace("/(root)/(tabs)/home");
         } else {
           // Afficher le message d'erreur envoyé par le serveur
           setErrors({
@@ -92,8 +92,26 @@ const SignIn = () => {
   };
 
   return (
-    <ScrollView className="flex-1 mt-2 bg-white">
-      <SafeAreaView className="flex-1 bg-white mt-5">
+    <ScrollView className="flex-1 bg-[#060406]">
+      <SafeAreaView className="flex-1 mt-5 bg-[#060406]">
+        <View
+          style={{
+            position: "absolute",
+            top: -100, // Ajustez pour positionner correctement
+            left: 80,
+            width: 500,
+            height: 300,
+            backgroundColor: "transparent",
+            transform: [{ rotate: "-45deg" }],
+            borderRadius: 250,
+            shadowColor: "#43116A",
+            shadowOffset: { width: 0, height: 0 }, // Aucun décalage
+            shadowOpacity: 0.5,
+            shadowRadius: 30, // Rayon de l'ombre pour un flou plus important
+            elevation: 150, // Pour Android
+          }}
+        />
+
         <TouchableOpacity
           onPress={() => {
             router.replace("/(auth)/welcome");
@@ -105,13 +123,12 @@ const SignIn = () => {
           />
         </TouchableOpacity>
         <View className="m-5 items-center">
-          <Text className="text-center text-xl text-black font-bold font-InterBlack">
-            De retour
-          </Text>
-          <Text className="text-center text-xl text-black font-bold">
-            Connectez-vous
-          </Text>
-          <View className="mb-80">
+          <View className="flex flex-row items-center">
+            <Text className="text-center text-xl text-white">
+              Connectez-vous à Localchat
+            </Text>
+          </View>
+          <View className="mb-64 mt-16">
             <InputField
               label="Adresse mail"
               placeholder="Entrer votre adresse mail"
@@ -133,9 +150,9 @@ const SignIn = () => {
 
           <CustomButton
             onPress={submitForm} // Le bouton soumet le formulaire lors du clic
-            textColor="#fff"
+            textColor="#000"
             text="Se connecter"
-            bgColor="#24786D"
+            bgColor="#fff"
           />
           <View className="flex flex-col justify-around items-center">
             <Text className="text-[#B9C1BE]">Ou</Text>
@@ -144,7 +161,7 @@ const SignIn = () => {
                 router.replace("/(auth)/sign-up");
               }}
             >
-              <Text className="text-black">Inscription</Text>
+              <Text className="text-[#24786D]">Inscription</Text>
             </TouchableOpacity>
           </View>
         </View>

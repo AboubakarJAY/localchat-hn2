@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../components/CustomButton";
 
@@ -29,17 +29,19 @@ function Onboarding() {
       />
 
       <View className="z-10 relative">
-        {/* <Image source={require("../../assets/images/logo1.png")} /> */}
-        <Text className="text-2xl font-extrabold text-white"> Lorem Ipsum</Text>
+        <Image
+          source={require("../../assets/images/logo.png")}
+          className="w-48 h-10 mt-2"
+        />
+        {/* <Text className="text-2xl font-extrabold text-white"> Lorem Ipsum</Text> */}
       </View>
       <View className="flex w-full items-center h-2/4 justify-between">
         <Text className="w-10/12 text-white text-center text-4xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit
+          Connectez vous et vos amis facilement sur un réseau local
         </Text>
         <Text className="w-11/12 text-center text-[#B9C1BE]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam soluta
-          fuga quia velit perspiciatis. Quis voluptate rerum aperiam ut nihil
-          repellendus possimus, magni fugit nisi facere et dolores placeat ex.
+          Notre application de messagerie et gestion d’événements est le moyen
+          idéal pour rester connecter avec des amis en local
         </Text>
       </View>
       <View className="flex w-full items-center h-1/5 justify-around">
