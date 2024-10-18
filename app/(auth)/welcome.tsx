@@ -4,6 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../components/CustomButton";
 
 function Onboarding() {
+  const handleRedirect = (route: string) => {
+    router.push(route as any);
+  };
+
   return (
     <SafeAreaView className="flex h-full items-center justify-between bg-[#060406]">
       <View
@@ -45,8 +49,9 @@ function Onboarding() {
         </View>
         <CustomButton
           text="S'inscrire"
-          route="/(auth)/sign-up"
-          title="s'inscrire"
+          onPress={() => {
+            handleRedirect("/(auth)/sign-up");
+          }}
           bgColor="#fff"
           textColor="#000"
         />

@@ -1,33 +1,34 @@
-import { router } from "expo-router";
-import { ButtonProps, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
-interface CustomButtonProps extends ButtonProps {
+interface CustomButtonProps {
   bgColor: string;
   textColor: string;
   text: string;
-  route: string;
+  onPress: () => void;
+  disabled?: boolean; // Ajouter la propriété 'disabled' optionnelle
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
   bgColor,
   textColor,
   text,
-  route,
-  ...rest
+  onPress,
+  disabled = false, // Définir la valeur par défaut à 'false'
 }) => {
   return (
     <View className="w-11/12">
       <TouchableOpacity
-        onPress={() => {
-          router.replace(route as any);
+        onPress={onPress}
+        className={`w-full py-4 rounded-xl border border-gray-300 ${bgColor}`}
+        disabled={disabled} // Gérer l'état désactivé du bouton
+        style={{
+          backgroundColor: disabled ? "#aaa" : bgColor, // Si désactivé, changer la couleur de fond
+          opacity: disabled ? 0.6 : 1, // Réduire l'opacité si désactivé
         }}
-        style={{ backgroundColor: bgColor }}
-        className="w-full py-4 rounded-xl border border-gray-300"
-        {...rest} // Passer les autres props si nécessaire
       >
         <Text
+          className="text-center font-extrabold"
           style={{ color: textColor }}
-          className="text-black font-extrabold text-center"
         >
           {text}
         </Text>
