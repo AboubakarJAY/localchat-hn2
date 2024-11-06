@@ -59,9 +59,9 @@ const SignUp = () => {
       valid = false;
     }
 
-    if (form.password.length < 6) {
+    if (form.password.length < 8) {
       newErrors.password =
-        "Le mot de passe doit contenir au moins 6 caractères";
+        "Le mot de passe doit contenir au moins 8 caractères";
       valid = false;
     }
 
@@ -84,20 +84,26 @@ const SignUp = () => {
   };
 
   // Soumettre le formulaire au serveur local
+
+  const { confirmPassword, ...formToSend } = form;
+
   const submitForm = async () => {
     if (validateForm()) {
       try {
-        const response = await fetch("http://192.168.1.X:3000/signup", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
+        const response = await fetch(
+          "http://192.168.43.146:4012/user/register",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formToSend),
+          }
+        );
 
         const data = await response.json();
 
         if (response.ok) {
           // Stocker le JWT dans AsyncStorage
-          await AsyncStorage.setItem("token", data.token); // Assurez-vous que le serveur renvoie un champ 'token'
+          await AsyncStorage.setItem("token", data.token); // S'assurer que le serveur renvoie un champ 'token'
           Alert.alert("Succès", "Inscription réussie");
           // Rediriger vers la page d'accueil après l'inscription réussie
           router.replace("/(root)/(tabs)/home");

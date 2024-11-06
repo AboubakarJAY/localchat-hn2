@@ -22,13 +22,18 @@ const SignIn = () => {
   const [errors, setErrors] = useState({
     email: "",
     password: "",
-    general: "", // Pour les erreurs renvoyées par le serveur
+    general: "",
   });
 
   // Validation de l'email
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  // Validation du mot de passe
+  const validatePassword = (password: string) => {
+    return password.length >= 8; // Exemple de condition pour la longueur du mot de passe
   };
 
   // Fonction de validation
@@ -41,8 +46,9 @@ const SignIn = () => {
       valid = false;
     }
 
-    if (!form.password) {
-      newErrors.password = "Le mot de passe est requis";
+    if (!form.password || !validatePassword(form.password)) {
+      newErrors.password =
+        "Le mot de passe doit contenir au moins 8 caractères";
       valid = false;
     }
 
@@ -63,7 +69,7 @@ const SignIn = () => {
   const submitForm = async () => {
     if (validateForm()) {
       try {
-        const response = await fetch("http://192.168.1.X:3000/signin", {
+        const response = await fetch("http://192.168.43.146:4012/user/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
@@ -97,7 +103,7 @@ const SignIn = () => {
         <View
           style={{
             position: "absolute",
-            top: -100, // Ajustez pour positionner correctement
+            top: -100,
             left: 80,
             width: 500,
             height: 300,
@@ -105,10 +111,10 @@ const SignIn = () => {
             transform: [{ rotate: "-45deg" }],
             borderRadius: 250,
             shadowColor: "#43116A",
-            shadowOffset: { width: 0, height: 0 }, // Aucun décalage
+            shadowOffset: { width: 0, height: 0 },
             shadowOpacity: 0.5,
-            shadowRadius: 30, // Rayon de l'ombre pour un flou plus important
-            elevation: 150, // Pour Android
+            shadowRadius: 30,
+            elevation: 150,
           }}
         />
 
@@ -158,7 +164,8 @@ const SignIn = () => {
             <Text className="text-[#B9C1BE]">Ou</Text>
             <TouchableOpacity
               onPress={() => {
-                router.replace("/(auth)/sign-up");
+                router.replace("/(root)/(tabs)/home"); //Ajouter pour rediriger vers la page d'acceuil meme sans etre connecter
+                //router.replace("/(auth)/sign-up");
               }}
             >
               <Text className="text-[#24786D]">Inscription</Text>

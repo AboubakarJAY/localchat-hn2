@@ -40,8 +40,8 @@ function Onboarding() {
           Connectez vous et vos amis facilement sur un réseau local
         </Text>
         <Text className="w-11/12 text-center text-[#B9C1BE]">
-          Notre application de messagerie et gestion d’événements est le moyen
-          idéal pour rester connecter avec des amis en local
+          Notre application de messagerie et gestion d&apos;événements est le
+          moyen idéal pour rester connecter avec des amis en local
         </Text>
       </View>
       <View className="flex w-full items-center h-1/5 justify-around">

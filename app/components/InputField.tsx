@@ -10,13 +10,13 @@ import {
 interface InputFieldProps extends TextInputProps {
   label: string;
   placeholder: string;
-  error?: string; // Ajouter la propriété 'error' optionnelle
+  error?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
   label,
   placeholder,
-  error, // Inclure 'error'
+  error,
   ...rest
 }) => {
   return (
@@ -27,7 +27,7 @@ const InputField: React.FC<InputFieldProps> = ({
             {label}
           </Text>
           <TextInput
-            className="border-b border-gray-300 p-3 pl-0 w-80 text-base"
+            className="border-b border-gray-300 text-white p-3 pl-0 w-80 text-base"
             placeholder={placeholder}
             placeholderTextColor="gray"
             {...rest}
